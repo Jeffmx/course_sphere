@@ -1,50 +1,53 @@
 import styled from "styled-components"
 import { Link } from 'react-router-dom';
 
-const CardStyled = styled.figure`
+const CardStyled = styled.div`
   width: 360px;
-  height: 300px;
+  height: 200px;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
-
-  background: url(${props => props.$bg});
-  background-size: contain;
-  background-position: center;
   border-radius: 15px;
+  background: var(--cor3);
   
   .tittle, .desc, .date{
     padding: 10px;
-    display: flex;
     width: 100%;
-    background: var(--cor3);
+    text-overflow: ellipsis;
   }
 
   .tittle{
-    border-radius: 15px 15px 0 0;
     font-size: 27px;
   }
 
   .desc{
-    border-radius: 0 0 15px 15px;
-    justify-content: space-between;
-    font-size: 18px;
-    max-height: 130px;
-  }
+    display: flex;
+    font-size: 15px;
 
-  .dates{
-    font-size: 13px;
-    align-self: flex-end;
-  }
+    div{
+      width: 75%;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .dates{
+      width: 25%;
+      font-size: 13px;
+      align-self: flex-end;
+      text-align: right;
+    }
+   }
+
 `
 
-const Card = ({ link, name, description, start_date, end_date }) => {
+const Card = ({ id, name, description, start_date, end_date }) => {
   return (
-    <Link to={`/detalhes/${link}`}>
-      <CardStyled $bg={`https://img.youtube.com/vi/${link}/hqdefault.jpg`}>
+    <Link to={`/detalhes/${id}`}>
+      <CardStyled>
         <p className="tittle">{name}</p>
         <div className="desc">
-          <p>{description}</p>
+          <div><p>{description}</p></div>
           <div className="dates">
             <p>{start_date}</p>
             <p>{end_date}</p>

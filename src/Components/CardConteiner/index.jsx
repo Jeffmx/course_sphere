@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import add from "@/assets/add.svg"
 import Card from "../Card"
+import { useAuth } from "../../Context/AuthContext"
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 const ConteinerStyled = styled.div`
   gap: 27px;
@@ -11,9 +14,31 @@ const ConteinerStyled = styled.div`
   margin-bottom: 36px;
 
   .cards{
+    gap: 18px;
     display: flex;
+    overflow-x: auto;
     flex-direction: row;
-    gap: 18px
+    padding-bottom: 10px;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background-color: #999;
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #666;
+    }
   }
 
   .type{
@@ -28,34 +53,45 @@ const ConteinerStyled = styled.div`
   }
 `
 
-const CardConteiner = ({ type }) => {
+const CardConteiner = ({ nome, db }) => {
+  const { user } = useAuth();
+  const [content, setContent] = useState([]);
 
-  const handleLink = (link) => {
-    const regex =/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = link.match(regex);
-    return match ? match[1] : null;
-  }
+  useEffect(() => {
+    if (!user) return;
+
+    const buscarCursos = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/${db}?creator_id=${user.id}`);
+        const data = await res.json();
+        setContent(data);
+      } catch (error) {
+        console.error("Erro ao buscar cursos:", error);
+      }
+    };
+
+    buscarCursos();
+  }, [user, db]);
 
   return (
     <ConteinerStyled>
       <div className="type">
-        <h1>{type}</h1>
-        {type === "Cursos" && (<a href="/Cursos"><img src={add} alt="Adicionar curso" /></a>)}
+        <h1>{nome}</h1>
+        {user && nome === "Cursos" && (<Link to="/Cursos"><img src={add} alt="Adicionar curso" /></Link>)}
       </div>
       <ul className="cards">
-        <Card
-          link={handleLink("https://www.youtube.com/watch?v=RoJvkeFdPyY&list=RDMM&index=27")}
-          name="how to gamble"
-          description="just win and don't lose, it's that easy peezy lemmon squeezy"
-          start_date='12/12/12'
-          end_date='13/12/13'
-        />
-        <Card
-          name="how to gamble"
-          description="just win and don't lose, it's that easy peezy lemmon squeezy"
-          start_date='12/12/12'
-          end_date='13/12/13'
-        />
+        {user &&
+          content.map(
+            c =>
+              <Card
+                id={c.id}
+                name={c.name}
+                description={c.description}
+                start_date={c.start_date}
+                end_date={c.end_date}
+              />
+          )
+        }
       </ul>
     </ConteinerStyled>
   )

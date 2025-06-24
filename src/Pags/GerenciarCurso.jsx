@@ -6,6 +6,7 @@ import Button from "../Components/Button"
 import Input from "../Components/Input"
 import styled from "styled-components"
 import { useState } from "react"
+import { useAuth } from "../Context/AuthContext";
 
 const MainStyled = styled.main`
   gap: 36px;
@@ -63,19 +64,57 @@ const MainStyled = styled.main`
 const GerenciarCurso = () => {
   const [date1, setDate1] = useState('')
   const [date2, setDate2] = useState('')
+  const [title, setTitle] = useState('')
+  const [desc, setDesc] = useState('')
   const [erro, setErro] = useState('')
-
-  const validarDatas = () => {
-    if (new Date(date2) <= new Date(date1)) {
-      setErro('A data de conclusão deve estar no futuro')
-    } else {
-      setErro('')
-    }
-  }
+  const [sucesso, setSucesso] = useState('')
+  const { user } = useAuth()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    validarDatas()
+    if (title.length < 3) {
+      setErro('O nome do curso deve ter pelo menos 3 caracteres')
+    } else if (desc.length > 500) {
+      setErro('A descrição do curso deve ter no máximo 500 caracteres')
+    } else if (new Date(date2) <= new Date(date1)) {
+      setErro('A data de conclusão deve estar no futuro')
+    } else {
+      setErro('')
+      setSucesso('Curso criado com sucesso!')
+
+      const novoCurso = {
+        name: title,
+        description: desc,
+        start_date: date1,
+        end_date: date2,
+        creator_id: user.id,
+        instructors:[],
+      };
+
+      try {
+        fetch('http://localhost:3000/course', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(novoCurso),
+        })
+          .then(response => response.json())
+          .then(data => {
+            setTitle('');
+            setDesc('');
+            setDate1('');
+            setDate2('');
+            setErro('');
+          })
+          .catch(error => {
+            setErro('Erro ao criar curso. Tente novamente.');
+          });
+      } catch (error) {
+        setErro('Erro ao enviar dados. Tente novamente.');
+      }
+
+    }
   }
 
   return (<>
@@ -84,8 +123,20 @@ const GerenciarCurso = () => {
       <h1>Criar Cursos</h1>
       <form onSubmit={handleSubmit}>
         <div className="basico">
-          <Input type='text' required placeholder='Nome do Curso' />
-          <Input type='text' placeholder='Descrição' required />
+          <Input
+            type='text'
+            placeholder='Nome do Curso'
+            onChange={e => { setTitle(e.target.value) }}
+            value={title}
+            required
+          />
+          <Input
+            type='text'
+            placeholder='Descrição'
+            onChange={e => { setDesc(e.target.value) }}
+            value={desc}
+            required
+          />
           <div className="data_text">
             <p>Data de Inicio</p>
             <p>Data de Conclusão</p>
@@ -104,14 +155,8 @@ const GerenciarCurso = () => {
           </div>
           {erro && <span>{erro}</span>}
         </div>
-        <MenuSuspenso
-          label="Selecione as Aulas"
-          db="leasson"
-          value="a"
-          required
-        />
-        <CampoBusca/>
         <Button onClick={'submit'}>Salvar</Button>
+        {sucesso && <span style={{color:'lime', alignSelf:'center'}}>{sucesso}</span>}
       </form>
     </MainStyled>
     <Footer />

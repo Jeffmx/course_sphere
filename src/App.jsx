@@ -6,7 +6,6 @@ import { useAuth } from "./Context/AuthContext.jsx";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Pags/Dashboard.jsx";
 import Login from "./Pags/Login.jsx";
-import './App.css'
 
 async function fetchAndSaveUser() {
   const existingRes = await fetch("http://localhost:3000/users");

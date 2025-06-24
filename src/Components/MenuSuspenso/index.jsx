@@ -28,9 +28,6 @@ const MenuSuspenso = (props) => {
     const db = async () => {
       try {
         const res = await fetch(`http://localhost:3000/${props.db}`)
-        console.log(res);
-        console.log(await res.json());
-        
         const lesson = await res.json()
         setDados(lesson);
       } catch (err) {
@@ -48,7 +45,7 @@ const MenuSuspenso = (props) => {
         value={props.valor}
       >
         <option></option>
-        {dados.map(d => <option >{props.db !== "status"? d.name: d}</option>)}
+        {dados.map(d => <option >{props.db !== "status" ? d.name : d}</option>)}
       </SelectStyled>
     </MenuStyled>
   )

@@ -1,15 +1,25 @@
 import Header from "../Components/Header"
 import Footer from "../Components/Footer"
 import CardConteiner from "../Components/CardConteiner"
+import styled from "styled-components"
+
+const MainStyled = styled.main`
+  gap:72px;
+  display:flex; 
+  min-height: 75svh;
+  align-items:center;
+  flex-direction:column;
+  justify-content:center;
+`
 
 const Dashboard = () => {
   return (<>
-    <Header/>
-    <main>
-      <CardConteiner type='Cursos'/>
-      <CardConteiner type='Colaborações'/>
-    </main>
-    <Footer/>
+    <Header />
+    <MainStyled>
+      <CardConteiner nome='Cursos' db='course'/>
+      <CardConteiner nome='Colaborações' db='leasson'/>
+    </MainStyled>
+    <Footer />
   </>)
 }
 

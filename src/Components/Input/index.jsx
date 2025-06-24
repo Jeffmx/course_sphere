@@ -21,7 +21,6 @@ const Input = (props) => {
         }
       }}
       placeholder={props.placeholder}
-      onInput={e => e.target.setCustomValidity("")}
       onChange={props.onChange}
       value={props.value}
       required={props.required}
