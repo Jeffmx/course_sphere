@@ -1,0 +1,137 @@
+{
+  "course": [
+    {
+      "course_id": "wZlv3qDPfjk",
+      "name": "how to gamble",
+      "description": "just win and don't lose, it's that easy peezy lemmon squeezy",
+      "start_date": "24/06/2025",
+      "end_date": "24/07/2005",
+      "creator_id": 4,
+      "instructors": [3,6,9]
+    },
+    {
+      "course_id": "RoJvkeFdPyY",
+      "name": "how to not gamble",
+      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis, labore ipsa dolores optio earum vel doloribus unde rem rerum deserunt recusandae quibusdam aperiam quas ratione non nesciunt, ex quasi vitae.",
+      "start_date": "24/06/2025",
+      "end_date": "24/07/2025",
+      "creator_id": 1,
+      "instructors": [2,5,7]
+    }
+  ],
+  "status":["Draft", "Published", "Archived"],
+  "leasson": [
+    {
+      "name": "sacomene",
+      "status": "Draft",
+      "publish_date": "",
+      "video_url": "",
+      "course_id": "RoJvkeFdPyY",
+      "creator_id": 6
+    },
+    {
+      "name": "anon",
+      "status": "Published",
+      "publish_date": "03/06/2025",
+      "video_url": "",
+      "course_id": "RoJvkeFdPyY",
+      "creator_id": 9
+    },
+    {
+      "name": "anon3",
+      "status": "Published",
+      "publish_date": "15/06/2025",
+      "video_url": "",
+      "course_id": "RoJvkeFdPyY",
+      "creator_id": 10
+    },
+    {
+      "name": "anon6",
+      "status": "Published",
+      "publish_date": "09/06/2025",
+      "video_url": "",
+      "course_id": "RoJvkeFdPyY",
+      "creator_id": 15
+    },
+    {
+      "name": "hmm",
+      "status": "Archived",
+      "publish_date": "30/06/2025",
+      "video_url": "",
+      "course_id": "RoJvkeFdPyY",
+      "creator_id": 3
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Aylin Sommer",
+      "email": "aylin.sommer@example.com",
+      "password": "shDJvWcEaI",
+      "picture": "https://randomuser.me/api/portraits/med/women/47.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Clinton Rhodes",
+      "email": "clinton.rhodes@example.com",
+      "password": "bLrfeNPaDC",
+      "picture": "https://randomuser.me/api/portraits/med/men/2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Bob Neal",
+      "email": "bob.neal@example.com",
+      "password": "rwzJCeXCMA",
+      "picture": "https://randomuser.me/api/portraits/med/men/74.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Verónica Ramírez",
+      "email": "veronica.ramirez@example.com",
+      "password": "bGIeJRLAFf",
+      "picture": "https://randomuser.me/api/portraits/med/women/0.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Ülkü Uluhan",
+      "email": "ulku.uluhan@example.com",
+      "password": "zDcJpSDW",
+      "picture": "https://randomuser.me/api/portraits/med/women/77.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Alan Barrett",
+      "email": "alan.barrett@example.com",
+      "password": "qnYwZDfIl",
+      "picture": "https://randomuser.me/api/portraits/med/men/78.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Tejas Gatty",
+      "email": "tejas.gatty@example.com",
+      "password": "wCFIfBiI",
+      "picture": "https://randomuser.me/api/portraits/med/men/79.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Iina Paavola",
+      "email": "iina.paavola@example.com",
+      "password": "fzvYOjYgJ",
+      "picture": "https://randomuser.me/api/portraits/med/women/37.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Kirk Green",
+      "email": "kirk.green@example.com",
+      "password": "NeGQsFq",
+      "picture": "https://randomuser.me/api/portraits/med/men/26.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Ishaan Kumari",
+      "email": "ishaan.kumari@example.com",
+      "password": "uzfKNlacEr",
+      "picture": "https://randomuser.me/api/portraits/med/men/23.jpg"
+    }
+  ]
+}
