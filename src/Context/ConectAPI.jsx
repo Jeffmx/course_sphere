@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://json-server-omega-gilt.vercel.app/'
 
 export const getFromApi = async (endpoint) => {
   const res = await fetch(`${BASE_URL}/${endpoint}`)
