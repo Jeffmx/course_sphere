@@ -1,7 +1,6 @@
-import { Link, useParams } from 'react-router-dom'
 import { getFromApi } from "../Context/ConectAPI"
-import { useAuth } from "../Context/AuthContext"
 import ListMaker from "../Components/ListMaker"
+import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Header from "../Components/Header"
 import Footer from "../Components/Footer"
@@ -27,6 +26,11 @@ const MainStyled = styled.main`
     box-shadow: 0 0 50px 2px black;
   }
 
+  .ul_Aulas{
+    width: 50%; 
+    margin-right: 20px;
+  }
+
   .info_curso {
     flex-direction: column;
     display:flex;
@@ -43,20 +47,42 @@ const MainStyled = styled.main`
       justify-content: space-between;
     }
   }
+
+  @media (max-width: 425px) {
+    .info_curso {
+      padding: 20px;
+
+      div{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+
+      }
+      .ul_Aulas{
+        width: 90%;
+        margin-right: 0;
+      }
+    }
+  }
 `
 
 const DetalhesCurso = () => {
   const { id } = useParams()
-  const { user } = useAuth()
-  const [curso, setCurso] = useState(null)
   const [aula, setAula] = useState(null)
+  const [curso, setCurso] = useState(null)
+  const [atual, setAtual] = useState(null)
+  const [instructors, setInstructors] = useState(null)
 
   useEffect(() => {
     const fetchCurso = async () => {
       try {
-        var data = await getFromApi(`course/?id=${id}`)
-        setCurso(data[0])
+        var data = await getFromApi(`course/${id}`)
+        setCurso(data)
         setAula(await getFromApi(`leasson/?course_id=${id}&status=Published`))
+        const instructorIds = data.instructors.map(instructor => instructor)
+        const instructorsData = await Promise.all(instructorIds.map(id => getFromApi(`users/?id=${id}`)))
+        setInstructors(instructorsData.map(i => [i[0].name, i[0].picture]))
 
       } catch (err) {
         console.error("Algo deu errado", err)
@@ -66,27 +92,37 @@ const DetalhesCurso = () => {
     fetchCurso()
   }, [id])
 
-  if (!curso || !aula) return <p>Carregando...</p>
+  if (!curso || !aula || !instructors) return <p>Carregando...</p>
 
   return (<>
     <Header />
     <MainStyled>
       <h1 className="titulo">{curso.name}</h1>
       <iframe className="video"
-        src={`https://www.youtube.com/embed/${curso.course_id}`}
-        frameBorder='0'
+        src={`https://www.youtube.com/embed/${atual}`}
       />
       <div className="info_curso">
         <h3>{curso.description}</h3>
         <p>{curso.start_date} - {curso.end_date}</p>
         <div>
-          <ul style={{ width: '50%', marginRight: '20px' }}>
+          <ul className="ul_Aulas" >
             <h2>Aulas</h2>
-            {aula.map((aula) => <ListMaker>{aula.name}</ListMaker>)}
+            {aula.map((aula) =>
+              <ListMaker
+                video={aula.video_url}
+                destaque={setAtual}
+              >
+                {aula.name}
+              </ListMaker>)}
           </ul>
           <ul>
             <h2>Instrutores</h2>
-            {curso.instructors.map(instructors => <ListMaker>{instructors}</ListMaker>)}
+            {instructors.map(instructors =>
+              <ListMaker
+                name={instructors[0]}
+                picture={instructors[1]}
+              />
+            )}
           </ul>
         </div>
       </div>

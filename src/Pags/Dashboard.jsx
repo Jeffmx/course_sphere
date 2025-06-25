@@ -4,7 +4,7 @@ import CardConteiner from "../Components/CardConteiner"
 import styled from "styled-components"
 
 const MainStyled = styled.main`
-  gap:72px;
+  gap:20px;
   display:flex; 
   min-height: 75svh;
   align-items:center;

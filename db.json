@@ -1,34 +1,41 @@
 {
   "course": [
     {
-      "id": "6s2d",
-      "name": "how to gamble",
-      "description": "just win and don't lose, it's that easy peezy lemmon squeezy",
+      "name": "Introdução à Programação Web",
+      "description": "Aprenda os fundamentos de HTML, CSS e JavaScript para criar páginas web modernas e responsivas.",
       "start_date": "2025-04-01",
       "end_date": "2025-06-01",
       "creator_id": 4,
       "instructors": [
         3,
         6,
-        9
-      ]
+        9,
+        1
+      ],
+      "id": "6s2d"
     },
     {
-      "name": "how to not gamble",
-      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis, labore.",
+      "name": "Design de Interfaces com Figma",
+      "description": "Explore o processo de criação de interfaces bonitas e funcionais com o Figma, desde wireframes até protótipos.",
       "start_date": "2025-06-10",
       "end_date": "2025-07-01",
-      "creator_id": 1,
-      "instructors": [],
+      "creator_id": 3,
+      "instructors": [
+        10,
+        9,
+        6
+      ],
       "id": "ma3n"
     },
     {
-      "name": "ajustando",
-      "description": "pronto, ja tem muita coisa funfando agr",
+      "name": "Lógica de Programação com Jogos",
+      "description": "Desenvolva seu raciocínio lógico resolvendo desafios de programação com foco em criação de jogos simples.",
       "start_date": "2025-05-07",
       "end_date": "2025-06-01",
-      "creator_id": 1,
-      "instructors": [],
+      "creator_id": 10,
+      "instructors": [
+        1
+      ],
       "id": "571a"
     }
   ],
@@ -39,44 +46,58 @@
   ],
   "leasson": [
     {
-      "name": "sacomene",
+      "name": "Estrutura básica do HTML",
       "status": "Draft",
-      "publish_date": "",
-      "video_url": "",
+      "publish_date": "2025-06-10",
+      "video_url": "https://www.youtube.com/watch?v=5Hn58p-hYC0",
       "course_id": "6s2d",
-      "creator_id": 6
+      "creator_id": 6,
+      "id": "a1b2"
     },
     {
-      "name": "anon",
+      "name": "Estilizando com CSS",
       "status": "Published",
-      "publish_date": "03/06/2025",
-      "video_url": "",
+      "publish_date": "2025-06-12",
+      "video_url": "https://www.youtube.com/watch?v=pXAGoP2G2vE",
       "course_id": "6s2d",
-      "creator_id": 9
+      "creator_id": 9,
+      "id": "s5w3"
     },
     {
-      "name": "anon3",
+      "name": "Introdução ao JavaScript",
       "status": "Published",
-      "publish_date": "15/06/2025",
-      "video_url": "",
-      "course_id": "ma3n",
-      "creator_id": 10
+      "publish_date": "2025-06-14",
+      "video_url": "https://www.youtube.com/watch?v=WRlfwBof66s",
+      "course_id": "6s2d",
+      "creator_id": 3,
+      "id": "d4f5"
     },
     {
-      "name": "anon6",
+      "name": "Criando um protótipo no Figma",
       "status": "Published",
-      "publish_date": "09/06/2025",
-      "video_url": "",
+      "publish_date": "2025-06-17",
+      "video_url": "https://www.youtube.com/watch?v=MKDpqjxe1Rw",
       "course_id": "ma3n",
-      "creator_id": 15
+      "creator_id": 10,
+      "id": "m98n"
     },
     {
-      "name": "hmm",
+      "name": "Estruturas de repetição",
       "status": "Archived",
-      "publish_date": "30/06/2025",
-      "video_url": "",
-      "course_id": "ma3n",
-      "creator_id": 1
+      "publish_date": "2025-06-20",
+      "video_url": "https://www.youtube.com/watch?v=RlgdACEgA8c",
+      "course_id": "",
+      "creator_id": 1,
+      "id": "vf3g"
+    },
+    {
+      "name": "O poder da comédia",
+      "status": "Published",
+      "publish_date": "2025-06-26",
+      "video_url": "https://www.youtube.com/watch?v=S2IoQF9JBAM",
+      "course_id": "571a",
+      "creator_id": 1,
+      "id": "cs7d"
     }
   ],
   "users": [

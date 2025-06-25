@@ -35,16 +35,20 @@ const MenuSuspenso = (props) => {
     }
     buscarDados()
   }, [props.db])
-
+  
   return (
     <MenuStyled>
       <LabelStyled>{props.label}</LabelStyled>
       <SelectStyled
+        onChange={props.onChange}
         required={props.required}
-        value={props.valor}
+        value={props.value}
       >
-        <option></option>
-        {dados.map(d => <option >{props.db !== "status" ? d.name : d}</option>)}
+        <option key={0}></option>
+        {dados.map((d,i) => <option key={i} value={props.db !== "status" ? d.name : d}>
+          {props.db !== "status" ? d.name : d}
+          </option>
+        )}
       </SelectStyled>
     </MenuStyled>
   )

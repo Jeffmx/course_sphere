@@ -17,6 +17,12 @@ const HeaderStyled = styled.header`
     display: flex;
     align-items: center;
   }
+
+  @media (max-width: 425px) {
+    h3, a{
+      font-size: 0.8rem;
+    }
+  }
 `
 
 const Header = () =>{

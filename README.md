@@ -1,12 +1,14 @@
-# React + Vite
+# Projeto Course Sphere
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Os requisitos de users, aulas e cursos são feitos via fetch com o a URL sendo localhost, mas o link base pode ser mudado em ConectAPI na pasta de contextos
 
-Currently, two official plugins are available:
+db.json precisa estar em json server (infelizmente não consegui jogar essa maravilha num deploy)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Projeto feito usando React + Vite
 
-## Expanding the ESLint configuration
+Edit / Get / Delete / Post funcionam, mas não fui capaz de fazer barra de busca ou filtros
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+O db.json ja vem com poucos elementos e assim que o App entra em live 10 Random users são criados
+Esses users ja vem com ID pre-determinado para que os cursos e aulas não se percam a cada vez q novos users são feitos
+
+Agradeço mais uma vez por essa Oportunidade de ouro de ter a chance de fazer um projeto prático, foi bem desafiador completar o que eu consegui e no longo do trajeto acabei descobrindo coisas novas. Estarei aguardando ansiosamente pela resposta!

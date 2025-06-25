@@ -20,7 +20,7 @@ const CardStyled = styled.div`
   }
 
   .title{
-    font-size: 27px;
+    font-size: 1.3rem;
   }
 
   .top-card{
@@ -56,7 +56,7 @@ const CardStyled = styled.div`
 
 `
 
-const Card = ({ db, id, type, name, description, start_date, end_date }) => {
+const Card = ({ i, db, id, type, name, description, start_date, end_date }) => {
   const navigate = useNavigate()
 
   const handleDelete = async (e) => {
@@ -80,7 +80,11 @@ const Card = ({ db, id, type, name, description, start_date, end_date }) => {
 
   return (
     <div>
-      <CardStyled onClick={(e) => irPara(e, `/detalhes/${id}`)}>
+      <CardStyled key={i} onClick={(e) => db=='leasson' ?
+        irPara(e, `/aulas/${id}`) :
+        irPara(e, `/detalhes/${id}`)
+        }>
+
         <div className="top-card">
           <p className="title">{name}</p>
           <img src={remove} width={'25px'} onClick={handleDelete} />

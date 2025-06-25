@@ -80,15 +80,16 @@ const CardConteiner = ({ nome, db }) => {
       </div>
       <ul className="cards">
         {user &&
-          content.map(c =>
+          content.map((c,i) =>
             <Card
+              key={i}
               db={db}
               id={c.id}
               type={nome}
               name={c.name}
-              description={c.description}
-              start_date={c.start_date}
-              end_date={c.end_date}
+              description={db==='leasson'? c.status : c.description}
+              start_date={db==='leasson'? c.publish_date : c.start_date}
+              end_date={db==='leasson' ? "" : c.end_date}
             />
           )
         }

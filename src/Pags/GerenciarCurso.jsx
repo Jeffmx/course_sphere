@@ -25,12 +25,12 @@ const MainStyled = styled.main`
   }
   
   form{
+    gap:20px;
     display:flex;
     flex-direction:column;
-    padding: 20px;
-    gap:20px;
     border: 3px solid var(--cor1);
     border-radius: 27px;
+    padding: 20px;
   }
 
   div{
