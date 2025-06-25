@@ -1,7 +1,7 @@
-const BASE_URL = 'https://json-server-omega-gilt.vercel.app/'
+const BASE_URL = 'https://json-server-omega-gilt.vercel.app'
 
 export const getFromApi = async (endpoint) => {
-  console.log(`Buscando dados de: ${BASE_URL}/${endpoint}`);
+  console.log(`${BASE_URL}/${endpoint}`);
   
   const res = await fetch(`${BASE_URL}/${endpoint}`)
   if (!res.ok) throw new Error("Erro ao buscar dados")
