@@ -5,6 +5,7 @@ import ListMaker from "../Components/ListMaker"
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useAuth } from "../Context/AuthContext"
+import { getFromApi } from "../Context/ConectAPI"
 
 const MainStyled = styled.main`
   display: flex;
@@ -72,14 +73,12 @@ const DetalhesCurso = () => {
 
   useEffect(() => {
     const fetchCurso = async () => {
-      try {
-        var res = await fetch(`http://localhost:3000/course/?course_id=${id}`)
-        var data = await res.json()
+      try {        
+        var data = await getFromApi(`course/?course_id=${id}`)
         setCurso(data[0])
-
-        var res = await fetch(`http://localhost:3000/leasson/?course_id=${id}&status=Published`)
-        var data = await res.json()
-        setAula(data)
+        
+        setAula(await getFromApi(`leasson/?course_id=${id}&status=Published`))
+        
       } catch (err) {
         console.error("Algo deu errado", err)
       }

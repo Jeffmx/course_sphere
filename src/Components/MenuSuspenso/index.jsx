@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getFromApi } from "@/Context/ConectAPI";
 
 const MenuStyled = styled.div`
   width: 100%;
@@ -25,16 +26,14 @@ const MenuSuspenso = (props) => {
   const [dados, setDados] = useState([])
 
   useEffect(() => {
-    const db = async () => {
+    const buscarDados = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/${props.db}`)
-        const lesson = await res.json()
-        setDados(lesson);
+        setDados(await getFromApi(props.db));
       } catch (err) {
         console.error("deu ruim", err);
       }
     }
-    db()
+    buscarDados()
   }, [props.db])
 
   return (

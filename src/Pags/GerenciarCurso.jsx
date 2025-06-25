@@ -1,12 +1,11 @@
-import MenuSuspenso from "../Components/MenuSuspenso"
-import CampoBusca from "../Components/CampoBusca";
-import Header from "../Components/Header"
-import Footer from "../Components/Footer"
-import Button from "../Components/Button"
-import Input from "../Components/Input"
 import styled from "styled-components"
+import Input from "@/Components/Input"
+import Header from "@/Components/Header"
+import Footer from "@/Components/Footer"
+import Button from "@/Components/Button"
+import { useAuth } from "@/Context/AuthContext";
 import { useState } from "react"
-import { useAuth } from "../Context/AuthContext";
+import { postToApi } from "@/Context/ConectAPI"
 
 const MainStyled = styled.main`
   gap: 36px;
@@ -62,12 +61,12 @@ const MainStyled = styled.main`
 `
 
 const GerenciarCurso = () => {
+  const [sucesso, setSucesso] = useState('')
   const [date1, setDate1] = useState('')
   const [date2, setDate2] = useState('')
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
   const [erro, setErro] = useState('')
-  const [sucesso, setSucesso] = useState('')
   const { user } = useAuth()
 
   const handleSubmit = (e) => {
@@ -92,14 +91,7 @@ const GerenciarCurso = () => {
       };
 
       try {
-        fetch('http://localhost:3000/course', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(novoCurso),
-        })
-          .then(response => response.json())
+        postToApi('course', novoCurso)
           .then(data => {
             setTitle('');
             setDesc('');

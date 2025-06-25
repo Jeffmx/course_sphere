@@ -1,3 +1,4 @@
+import { getFromApi, postToApi } from "./Context/ConectAPI.jsx";
 import GerenciarInstrutor from "./Pags/GerenciarInstrutor.jsx";
 import GerenciarCurso from "./Pags/GerenciarCurso.jsx";
 import GerenciarAula from "./Pags/GerenciarAula.jsx";
@@ -8,8 +9,7 @@ import Dashboard from "./Pags/Dashboard.jsx";
 import Login from "./Pags/Login.jsx";
 
 async function fetchAndSaveUser() {
-  const existingRes = await fetch("http://localhost:3000/users");
-  const existingUsers = await existingRes.json();
+  const existingUsers = await getFromApi("users");
 
   if (existingUsers.length > 0) {
     return
@@ -26,13 +26,7 @@ async function fetchAndSaveUser() {
   }));
 
   for (const user of users) {
-    await fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(user)
-    });
+    await postToApi("users", user);
   }
 }
 

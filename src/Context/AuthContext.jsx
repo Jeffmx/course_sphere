@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getFromApi } from "./ConectAPI";
 
 const AuthContext = createContext()
 
@@ -15,9 +16,7 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const login = async ({ email, password }) => {
-    const res = await fetch("http://localhost:3000/users")
-    const users = await res.json()
-
+    const users = await getFromApi('users')
     const found = users.find((u) => u.email === email && u.password === password)
 
     if (!found) {
@@ -27,6 +26,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(found))
     setUser(found)
     navigate("/")
+    
   }
 
   const logout = () => {

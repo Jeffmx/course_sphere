@@ -52,6 +52,15 @@
       "end_date": "2025-06-18",
       "creator_id": 1,
       "instructors": []
+    },
+    {
+      "id": "571a",
+      "name": "ajustando",
+      "description": "postToApi funcionando?",
+      "start_date": "2025-05-07",
+      "end_date": "2025-06-01",
+      "creator_id": 1,
+      "instructors": []
     }
   ],
   "status": [
@@ -104,73 +113,73 @@
   "users": [
     {
       "id": 1,
-      "name": "Aylin Sommer",
-      "email": "aylin.sommer@example.com",
-      "password": "shDJvWcEaI",
-      "picture": "https://randomuser.me/api/portraits/med/women/47.jpg"
+      "name": "Aaradhya Keshri",
+      "email": "aaradhya.keshri@example.com",
+      "password": "IWaENph",
+      "picture": "https://randomuser.me/api/portraits/med/women/48.jpg"
     },
     {
       "id": 2,
-      "name": "Clinton Rhodes",
-      "email": "clinton.rhodes@example.com",
-      "password": "bLrfeNPaDC",
-      "picture": "https://randomuser.me/api/portraits/med/men/2.jpg"
+      "name": "Jon Castillo",
+      "email": "jon.castillo@example.com",
+      "password": "QzLuLkcgT",
+      "picture": "https://randomuser.me/api/portraits/med/men/8.jpg"
     },
     {
       "id": 3,
-      "name": "Bob Neal",
-      "email": "bob.neal@example.com",
-      "password": "rwzJCeXCMA",
-      "picture": "https://randomuser.me/api/portraits/med/men/74.jpg"
+      "name": "Hayri Van Kaathoven",
+      "email": "hayri.vankaathoven@example.com",
+      "password": "UrkpvbywhC",
+      "picture": "https://randomuser.me/api/portraits/med/men/98.jpg"
     },
     {
       "id": 4,
-      "name": "Verónica Ramírez",
-      "email": "veronica.ramirez@example.com",
-      "password": "bGIeJRLAFf",
-      "picture": "https://randomuser.me/api/portraits/med/women/0.jpg"
+      "name": "Živan Blažić",
+      "email": "zivan.blazic@example.com",
+      "password": "YJXJnAoY",
+      "picture": "https://randomuser.me/api/portraits/med/men/64.jpg"
     },
     {
       "id": 5,
-      "name": "Ülkü Uluhan",
-      "email": "ulku.uluhan@example.com",
-      "password": "zDcJpSDW",
-      "picture": "https://randomuser.me/api/portraits/med/women/77.jpg"
+      "name": "Ronnie Patterson",
+      "email": "ronnie.patterson@example.com",
+      "password": "nAONTkGsP",
+      "picture": "https://randomuser.me/api/portraits/med/men/57.jpg"
     },
     {
       "id": 6,
-      "name": "Alan Barrett",
-      "email": "alan.barrett@example.com",
-      "password": "qnYwZDfIl",
-      "picture": "https://randomuser.me/api/portraits/med/men/78.jpg"
+      "name": "Marianne Harcourt",
+      "email": "marianne.harcourt@example.com",
+      "password": "VgyIQoKN",
+      "picture": "https://randomuser.me/api/portraits/med/women/86.jpg"
     },
     {
       "id": 7,
-      "name": "Tejas Gatty",
-      "email": "tejas.gatty@example.com",
-      "password": "wCFIfBiI",
-      "picture": "https://randomuser.me/api/portraits/med/men/79.jpg"
+      "name": "Sinezora Kravchik",
+      "email": "sinezora.kravchik@example.com",
+      "password": "HkOwxN",
+      "picture": "https://randomuser.me/api/portraits/med/women/44.jpg"
     },
     {
       "id": 8,
-      "name": "Iina Paavola",
-      "email": "iina.paavola@example.com",
-      "password": "fzvYOjYgJ",
-      "picture": "https://randomuser.me/api/portraits/med/women/37.jpg"
+      "name": "Sarah White",
+      "email": "sarah.white@example.com",
+      "password": "SoYcCsJv",
+      "picture": "https://randomuser.me/api/portraits/med/women/77.jpg"
     },
     {
       "id": 9,
-      "name": "Kirk Green",
-      "email": "kirk.green@example.com",
-      "password": "NeGQsFq",
-      "picture": "https://randomuser.me/api/portraits/med/men/26.jpg"
+      "name": "Akshita Kaur",
+      "email": "akshita.kaur@example.com",
+      "password": "bqMoUCJE",
+      "picture": "https://randomuser.me/api/portraits/med/women/38.jpg"
     },
     {
       "id": 10,
-      "name": "Ishaan Kumari",
-      "email": "ishaan.kumari@example.com",
-      "password": "uzfKNlacEr",
-      "picture": "https://randomuser.me/api/portraits/med/men/23.jpg"
+      "name": "Gottfried Hansel",
+      "email": "gottfried.hansel@example.com",
+      "password": "WnGtCBSpb",
+      "picture": "https://randomuser.me/api/portraits/med/men/66.jpg"
     }
   ]
 }

@@ -1,9 +1,10 @@
-import styled from "styled-components"
-import add from "@/assets/add.svg"
 import Card from "../Card"
-import { useAuth } from "../../Context/AuthContext"
+import add from "@/assets/add.svg"
+import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { useAuth } from "@/Context/AuthContext"
+import { getFromApi } from "@/Context/ConectAPI"
 
 const ConteinerStyled = styled.div`
   gap: 27px;
@@ -62,9 +63,7 @@ const CardConteiner = ({ nome, db }) => {
 
     const buscarCursos = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/${db}?creator_id=${user.id}`);
-        const data = await res.json();
-        setContent(data);
+        setContent(await getFromApi(`${db}?creator_id=${user.id}`));
       } catch (error) {
         console.error("Erro ao buscar cursos:", error);
       }
