@@ -4,8 +4,8 @@
       "id": "6s2d",
       "name": "how to gamble",
       "description": "just win and don't lose, it's that easy peezy lemmon squeezy",
-      "start_date": "24/06/2025",
-      "end_date": "24/07/2005",
+      "start_date": "2025-04-01",
+      "end_date": "2025-06-01",
       "creator_id": 4,
       "instructors": [
         3,
@@ -14,53 +14,22 @@
       ]
     },
     {
-      "id": "ma3n",
       "name": "how to not gamble",
-      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis, labore ipsa dolores optio earum vel doloribus unde rem rerum deserunt recusandae quibusdam aperiam quas ratione non nesciunt, ex quasi vitae.",
-      "start_date": "24/06/2025",
-      "end_date": "24/07/2025",
+      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis, labore.",
+      "start_date": "2025-06-10",
+      "end_date": "2025-07-01",
       "creator_id": 1,
-      "instructors": [
-        2,
-        5,
-        7
-      ]
+      "instructors": [],
+      "id": "ma3n"
     },
     {
-      "id": "904f",
-      "name": "aas",
-      "description": "a",
-      "start_date": "2025-06-13",
-      "end_date": "2025-06-16",
-      "creator_id": 1,
-      "instructors": []
-    },
-    {
-      "id": "03a4",
-      "name": "asd",
-      "description": "a",
-      "start_date": "2025-06-12",
-      "end_date": "2025-06-18",
-      "creator_id": 1,
-      "instructors": []
-    },
-    {
-      "id": "3an4",
-      "name": "asd",
-      "description": "a",
-      "start_date": "2025-06-12",
-      "end_date": "2025-06-18",
-      "creator_id": 1,
-      "instructors": []
-    },
-    {
-      "id": "571a",
       "name": "ajustando",
-      "description": "postToApi funcionando?",
+      "description": "pronto, ja tem muita coisa funfando agr",
       "start_date": "2025-05-07",
       "end_date": "2025-06-01",
       "creator_id": 1,
-      "instructors": []
+      "instructors": [],
+      "id": "571a"
     }
   ],
   "status": [

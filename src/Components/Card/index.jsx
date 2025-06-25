@@ -1,8 +1,11 @@
 import styled from "styled-components"
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import remove from '@/assets/remove.svg'
+import edit from '@/assets/edit.svg'
+import { removeFromApi } from "@/Context/ConectAPI"
 
 const CardStyled = styled.div`
-  width: 360px;
+  width: 340px;
   height: 200px;
   display: flex;
   flex-wrap: wrap;
@@ -10,14 +13,26 @@ const CardStyled = styled.div`
   border-radius: 15px;
   background: var(--cor3);
   
-  .tittle, .desc, .date{
+  .title, .desc, .date{
     padding: 10px;
     width: 100%;
     text-overflow: ellipsis;
   }
 
-  .tittle{
+  .title{
     font-size: 27px;
+  }
+
+  .top-card{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+
+    img{
+      margin-right: 10px;
+      cursor: pointer;
+    }
   }
 
   .desc{
@@ -41,11 +56,36 @@ const CardStyled = styled.div`
 
 `
 
-const Card = ({ id, name, description, start_date, end_date }) => {
+const Card = ({ db, id, type, name, description, start_date, end_date }) => {
+  const navigate = useNavigate()
+
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (window.confirm("Você tem certeza que deseja excluir este item?")) {
+      try {
+        await removeFromApi(db, id)
+        window.location.reload()
+      } catch (error) {
+        console.error("Erro ao remover o item:", error)
+      }
+    }
+  }
+
+  const irPara = (e, destino) => {
+    e.preventDefault()
+    e.stopPropagation()
+    navigate(destino)
+  }
+
   return (
-    <Link to={`/detalhes/${id}`}>
-      <CardStyled>
-        <p className="tittle">{name}</p>
+    <div>
+      <CardStyled onClick={(e) => irPara(e, `/detalhes/${id}`)}>
+        <div className="top-card">
+          <p className="title">{name}</p>
+          <img src={remove} width={'25px'} onClick={handleDelete} />
+          <img src={edit} width={'25px'} onClick={(e) => irPara(e, `/${type}/${id}`)} />
+        </div>
         <div className="desc">
           <div><p>{description}</p></div>
           <div className="dates">
@@ -54,7 +94,7 @@ const Card = ({ id, name, description, start_date, end_date }) => {
           </div>
         </div>
       </CardStyled>
-    </Link>
+    </div>
   )
 }
 

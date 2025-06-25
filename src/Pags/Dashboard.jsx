@@ -17,7 +17,7 @@ const Dashboard = () => {
     <Header />
     <MainStyled>
       <CardConteiner nome='Cursos' db='course'/>
-      <CardConteiner nome='Colaborações' db='leasson'/>
+      <CardConteiner nome='Aulas' db='leasson'/>
     </MainStyled>
     <Footer />
   </>)

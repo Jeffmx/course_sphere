@@ -1,17 +1,23 @@
+import { Link, useParams } from 'react-router-dom'
+import { getFromApi } from "../Context/ConectAPI"
+import { useAuth } from "../Context/AuthContext"
+import ListMaker from "../Components/ListMaker"
+import { useEffect, useState } from 'react'
 import Header from "../Components/Header"
 import Footer from "../Components/Footer"
 import styled from "styled-components"
-import ListMaker from "../Components/ListMaker"
-import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { useAuth } from "../Context/AuthContext"
-import { getFromApi } from "../Context/ConectAPI"
 
 const MainStyled = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 72px;
+
+  .titulo{
+    font-size:2rem;
+    width: 70%;
+    margin-bottom: -50px;
+  }
 
   .video{
     width: 70%;
@@ -21,7 +27,7 @@ const MainStyled = styled.main`
     box-shadow: 0 0 50px 2px black;
   }
 
-  .dc_coisos {
+  .info_curso {
     flex-direction: column;
     display:flex;
     gap:30px;
@@ -38,32 +44,6 @@ const MainStyled = styled.main`
     }
   }
 `
-const FigureStyled = styled.figure`
-  position: relative;
-  width: 100%;
-  height: 30svh;
-  
-  .titulo{
-    margin-top: 2%;
-    justify-self: center;
-    position: relative;
-    text-shadow: 0 0 10px black;
-  }
-  
-  &::after{
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-
-    background: url(${props => props.$img});
-    background-position: center;
-    background-size: cover;
-    filter: blur(5px);
-    z-index: -1;
-  }
-`
 
 const DetalhesCurso = () => {
   const { id } = useParams()
@@ -73,12 +53,11 @@ const DetalhesCurso = () => {
 
   useEffect(() => {
     const fetchCurso = async () => {
-      try {        
-        var data = await getFromApi(`course/?course_id=${id}`)
+      try {
+        var data = await getFromApi(`course/?id=${id}`)
         setCurso(data[0])
-        
         setAula(await getFromApi(`leasson/?course_id=${id}&status=Published`))
-        
+
       } catch (err) {
         console.error("Algo deu errado", err)
       }
@@ -90,23 +69,14 @@ const DetalhesCurso = () => {
   if (!curso || !aula) return <p>Carregando...</p>
 
   return (<>
+    <Header />
     <MainStyled>
-      <FigureStyled $img={`https://img.youtube.com/vi/${curso.course_id}/hqdefault.jpg`}>
-        <Header />
-        <h1 className="titulo">{curso.name}</h1>
-
-        {user && user.id === curso.creator_id &&
-          <div style={{ marginLeft: '20px' }}>
-            <Link to={'/cursos'} >Editar</Link>
-          </div>
-        }
-
-      </FigureStyled>
+      <h1 className="titulo">{curso.name}</h1>
       <iframe className="video"
         src={`https://www.youtube.com/embed/${curso.course_id}`}
         frameBorder='0'
       />
-      <div className="dc_coisos">
+      <div className="info_curso">
         <h3>{curso.description}</h3>
         <p>{curso.start_date} - {curso.end_date}</p>
         <div>

@@ -3,9 +3,11 @@ import Input from "@/Components/Input"
 import Header from "@/Components/Header"
 import Footer from "@/Components/Footer"
 import Button from "@/Components/Button"
-import { useAuth } from "@/Context/AuthContext";
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import { postToApi } from "@/Context/ConectAPI"
+import { useAuth } from "@/Context/AuthContext";
+import { getFromApi, updateToApi } from "../Context/ConectAPI"
 
 const MainStyled = styled.main`
   gap: 36px;
@@ -68,8 +70,27 @@ const GerenciarCurso = () => {
   const [desc, setDesc] = useState('')
   const [erro, setErro] = useState('')
   const { user } = useAuth()
+  const { id } = useParams()
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const fillCurso = async () => {
+      try {
+        const res = await getFromApi(`course/${id}`)
+        setTitle(res.name)
+        setDesc(res.description)
+        setDate1(res.start_date)
+        setDate2(res.end_date)
+
+      } catch (err) {
+        console.error("Erro ao carregar curso:", err)
+      }
+    }
+
+    if (id) fillCurso()
+  }, [id])
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (title.length < 3) {
       setErro('O nome do curso deve ter pelo menos 3 caracteres')
@@ -78,8 +99,6 @@ const GerenciarCurso = () => {
     } else if (new Date(date2) <= new Date(date1)) {
       setErro('A data de conclusão deve estar no futuro')
     } else {
-      setErro('')
-      setSucesso('Curso criado com sucesso!')
 
       const novoCurso = {
         name: title,
@@ -87,25 +106,26 @@ const GerenciarCurso = () => {
         start_date: date1,
         end_date: date2,
         creator_id: user.id,
-        instructors:[],
+        instructors: [],
       };
 
       try {
-        postToApi('course', novoCurso)
-          .then(data => {
-            setTitle('');
-            setDesc('');
-            setDate1('');
-            setDate2('');
-            setErro('');
-          })
-          .catch(error => {
-            setErro('Erro ao criar curso. Tente novamente.');
-          });
-      } catch (error) {
-        setErro('Erro ao enviar dados. Tente novamente.');
-      }
+        if (id) {
+          await updateToApi('course', id, novoCurso)
+          setSucesso('Curso atualizado com sucesso!')
+        } else {
+          await postToApi('course', novoCurso)
+          setSucesso('Curso criado com sucesso!')
+        }
 
+        setTitle('');
+        setDesc('');
+        setDate1('');
+        setDate2('');
+        setErro('')
+      } catch (error) {
+        setErro('Erro ao criar curso. Tente novamente.');
+      }
     }
   }
 
@@ -148,7 +168,7 @@ const GerenciarCurso = () => {
           {erro && <span>{erro}</span>}
         </div>
         <Button onClick={'submit'}>Salvar</Button>
-        {sucesso && <span style={{color:'lime', alignSelf:'center'}}>{sucesso}</span>}
+        {sucesso && <span style={{ color: 'lime', alignSelf: 'center' }}>{sucesso}</span>}
       </form>
     </MainStyled>
     <Footer />
