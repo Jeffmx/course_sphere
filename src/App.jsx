@@ -39,7 +39,7 @@ function App() {
       <Route path="/" element={<Dashboard />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/detalhes/:id" element={<DetalhesCurso />}></Route>
-      <Route path="/aulas" element={user ? <GerenciarAula /> : <Login />}></Route>
+      <Route path="/aulas" element={<GerenciarAula />}></Route>
       <Route path="/cursos" element={user ? <GerenciarCurso /> : <Login />}></Route>
       <Route path="/instrutores" element={<GerenciarInstrutor />}></Route>
     </Routes>
