@@ -50,6 +50,8 @@ const MsgStyled = styled.p`
 `
 
 const Login = () => {
+  console.log("pre-render");
+  
   const { login } = useAuth()
   const [input, setInput] = useState({ email: "", password: "" })
 
@@ -67,6 +69,7 @@ const Login = () => {
 
   return (
     <LoginStyled>
+      {console.log("render")}
       <div className="login_cover">
         <img src={logo} width={'200px'} />
         <h1>Course Sphere</h1>
