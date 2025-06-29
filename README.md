@@ -18,6 +18,6 @@ A pagina de detalhes do video tem a função de trocar o video em destaque pelo 
 A pagina de detalhes só mostra videos publicados
 
 obs obs:
-É meu 1 projeto desse tipo, pra uma vaga de emprego então talvez eu tenha mes esqueci de informar alguma, mas independente do resultado espero poder contar com o feedback para casos de novas oportunidades
+É meu 1 projeto desse tipo, pra uma vaga de emprego então talvez eu tenha mes esqueci de informar alguma coisa, mas independente do resultado espero poder contar com o feedback para casos de novas oportunidades
 
 Agradeço mais uma vez por essa Oportunidade de ouro de ter a chance de fazer um projeto prático, foi bem desafiador completar o que eu consegui e no longo do trajeto acabei descobrindo coisas novas. Estarei aguardando ansiosamente pela resposta!
